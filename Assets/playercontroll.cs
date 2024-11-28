@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -6,6 +6,9 @@ using UnityEngine.PlayerLoop;
 public class Movement : MonoBehaviour {
   public float runSpeed = 0.6f; 
   public float jumpForce = 2.6f; 
+
+  public float Jumptime1;
+  public float Jumptime2;
 
   public PhysicsMaterial2D material1; 
   public PhysicsMaterial2D material2;
@@ -24,8 +27,8 @@ public class Movement : MonoBehaviour {
   private bool APressed = false; 
   private bool DPressed = false; 
 
-  private bool Hold = false;
 
+  [SerializeField]private float Holdsecond=0;
   void Awake() {
     body = GetComponent<Rigidbody2D>(); // Setting the RigidBody2D component.
     sr = GetComponent<SpriteRenderer>(); // Setting the SpriteRenderer component. 
@@ -36,8 +39,10 @@ public class Movement : MonoBehaviour {
 
   // Update() is called every frame.
   void Update() {
-    if (Input.GetKey(KeyCode.W)) Hold = true;      //蓄力跳由這開始
-    if (Input.GetKeyDown(KeyCode.W)) jumpPressed = true; 
+        //蓄力跳由這開始
+    if (Input.GetKeyDown(KeyCode.W)) Jumptime1 = Time.time; 
+    if (Input.GetKeyUp(KeyCode.W)) jumpPressed = true;
+  //  if (Input.GetKey(KeyCode.W)) jumpPressed = false;  
     if (Input.GetKey(KeyCode.A)) APressed = true; 
     if (Input.GetKey(KeyCode.D)) DPressed = true; 
   }
@@ -56,7 +61,8 @@ public class Movement : MonoBehaviour {
    
       isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer); // Checking if character is on the ground.
       if (isGrounded==true){Jumpcheck=true;}
-   
+
+
       // Left/Right movement.
      if (Jumpcheck == true){
    
@@ -72,12 +78,19 @@ public class Movement : MonoBehaviour {
           transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z); // Rotating the character object to the right.
           DPressed = false; // Returning initial value.
       }
+
         else body.velocity = new Vector2(0, body.velocity.y);
-      
-      
+    
         if (jumpPressed && isGrounded) {
+            Jumptime2=Time.time;
+
+          if ((Jumptime2 - Jumptime1) < 1.46f){
             body.velocity = new Vector2(0, jumpForce); // Jump physics.
-            jumpPressed = false; // Returning initial value.   
+            jumpPressed = false;  } // Returning initial value. 
+          else{
+            body.velocity = new Vector2(0, jumpForce*1.35f); 
+            jumpPressed = false;
+          }   
       }
       }
       if (isGrounded == false){
