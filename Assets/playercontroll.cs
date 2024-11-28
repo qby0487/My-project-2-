@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+
 public class Movement : MonoBehaviour {
+
   public float runSpeed = 0.6f; 
   public float jumpForce = 2.6f; 
 
   public float Jumptime1;
   public float Jumptime2;
 
+  private bool timedebug = false;
   public PhysicsMaterial2D material1; 
   public PhysicsMaterial2D material2;
   private Collider2D col;
@@ -17,7 +20,7 @@ public class Movement : MonoBehaviour {
   private Rigidbody2D body; // Variable for the RigidBody2D component.
   private SpriteRenderer sr; // Variable for the SpriteRenderer component.
   public bool Jumpcheck = true;
-  [SerializeField] private bool isGrounded; // Variable that will check if character is on the ground.
+  [SerializeField] private bool isGrounded; //check if character is on the ground.
   public GameObject groundCheckPoint; // The object through which the isGrounded check is performed.
   public float groundCheckRadius; // isGrounded check radius.
   public LayerMask groundLayer; // Layer wich the character can jump on.
@@ -26,9 +29,10 @@ public class Movement : MonoBehaviour {
   private bool jumpPressed = false; 
   private bool APressed = false; 
   private bool DPressed = false; 
+  private bool Jumpstatus = false;
 
 
-  [SerializeField]private float Holdsecond=0;
+
   void Awake() {
     body = GetComponent<Rigidbody2D>(); // Setting the RigidBody2D component.
     sr = GetComponent<SpriteRenderer>(); // Setting the SpriteRenderer component. 
@@ -39,9 +43,24 @@ public class Movement : MonoBehaviour {
 
   // Update() is called every frame.
   void Update() {
-        //蓄力跳由這開始
-    if (Input.GetKeyDown(KeyCode.W)) Jumptime1 = Time.time; 
-    if (Input.GetKeyUp(KeyCode.W)) jumpPressed = true;
+  if (isGrounded == true){
+    if (Jumpstatus==true){
+      Jumptime1= Time.time;
+      Jumpstatus = false;
+    }
+    if (Input.GetKeyDown(KeyCode.Space)){
+    Jumptime1 = Time.time;
+    }
+    
+    if (Input.GetKeyUp(KeyCode.Space)){
+      jumpPressed = true;
+    }
+    }
+    else {
+      if (Input.GetKey(KeyCode.Space))Jumpstatus=true;  
+      else Jumpstatus=false;
+    }
+  
   //  if (Input.GetKey(KeyCode.W)) jumpPressed = false;  
     if (Input.GetKey(KeyCode.A)) APressed = true; 
     if (Input.GetKey(KeyCode.D)) DPressed = true; 
@@ -84,7 +103,7 @@ public class Movement : MonoBehaviour {
         if (jumpPressed && isGrounded) {
             Jumptime2=Time.time;
 
-          if ((Jumptime2 - Jumptime1) < 1.46f){
+          if ((Jumptime2 - Jumptime1) < 1.26f){
             body.velocity = new Vector2(0, jumpForce); // Jump physics.
             jumpPressed = false;  } // Returning initial value. 
           else{
