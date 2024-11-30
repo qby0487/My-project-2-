@@ -72,7 +72,15 @@ public class Movement : MonoBehaviour {
             }
             else if (other.contacts[0].normal == new Vector2(-1f,0f) ){
               Jumpcheck = false;
-        }
+            if (other.gameObject.tag == "123")
+            {
+                Debug.Log("aAAAaa");
+            }
+            if (other.gameObject.tag == "456")
+            {
+                Debug.Log("456456456");
+            }
+            }
 }
 }
   // Update using for physics calculations.
@@ -116,4 +124,4 @@ public class Movement : MonoBehaviour {
         col.sharedMaterial = material2;
       }
 }
-  }
+}
