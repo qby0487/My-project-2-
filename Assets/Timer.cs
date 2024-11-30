@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
     {
         timer_f = Time.time;
         timer_i = Mathf.FloorToInt(timer_f);
-        Debug.Log(timer_i);
+      //  Debug.Log(timer_i);
    
         UpdateScoreText();
     }
