@@ -11,8 +11,6 @@ public class Movement : MonoBehaviour {
 
   public float Jumptime1;
   public float Jumptime2;
-
-  private bool timedebug = false;
   public PhysicsMaterial2D material1; 
   public PhysicsMaterial2D material2;
   private Collider2D col;
@@ -38,7 +36,7 @@ public class Movement : MonoBehaviour {
     sr = GetComponent<SpriteRenderer>(); // Setting the SpriteRenderer component. 
 
     col = GetComponent<Collider2D>();
-    col.sharedMaterial = material1;
+    col.sharedMaterial = material1;  //初始化材質，使材質為非彈性材質
   }
 
   // Update() is called every frame.
@@ -61,16 +59,17 @@ public class Movement : MonoBehaviour {
       else Jumpstatus=false;
     }
   
-  //  if (Input.GetKey(KeyCode.W)) jumpPressed = false;  
+    if (Input.GetKey(KeyCode.Space)) if ((Time.time - Jumptime1)>1.35f)Debug.Log("finished");//蓄力跳的完成偵測，之後可加音效
     if (Input.GetKey(KeyCode.A)) APressed = true; 
     if (Input.GetKey(KeyCode.D)) DPressed = true; 
   }
   void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "normal"){
-            if (other.contacts[0].normal == new Vector2(1f,0f) ){
+            if (other.contacts[0].normal == new Vector2(1f,0f) ){ //偵測含有normal tag的物體右側，並取消跳躍狀態
+              Debug.Log("aaaaaaa");
               Jumpcheck = false;
             }
-            else if (other.contacts[0].normal == new Vector2(-1f,0f) ){
+            else if (other.contacts[0].normal == new Vector2(-1f,0f) ){ //偵測含有normal tag的物體左側，並取消跳躍狀態
               Jumpcheck = false;
             if (other.gameObject.tag == "123")
             {
@@ -93,15 +92,15 @@ public class Movement : MonoBehaviour {
       // Left/Right movement.
      if (Jumpcheck == true){
    
-        col.sharedMaterial = material1;
+        col.sharedMaterial = material1; //切換材質為非彈性材質
    
         if (APressed) {
-          body.velocity = new Vector2(-runSpeed, body.velocity.y); // Move left physics.
+          body.velocity = new Vector2(-runSpeed, body.velocity.y); //左移
           transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180, transform.eulerAngles.z); // Rotating the character object to the left.
           APressed = false; // Returning initial value.
       }
         else if (DPressed) {
-          body.velocity = new Vector2(runSpeed, body.velocity.y); // Move right physics.
+          body.velocity = new Vector2(runSpeed, body.velocity.y); // 右移
           transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z); // Rotating the character object to the right.
           DPressed = false; // Returning initial value.
       }
@@ -115,13 +114,13 @@ public class Movement : MonoBehaviour {
             body.velocity = new Vector2(0, jumpForce); // Jump physics.
             jumpPressed = false;  } // Returning initial value. 
           else{
-            body.velocity = new Vector2(0, jumpForce*1.35f); 
+            body.velocity = new Vector2(0, jumpForce*1.35f); //蓄力大跳
             jumpPressed = false;
           }   
       }
       }
       if (isGrounded == false){
-        col.sharedMaterial = material2;
+        col.sharedMaterial = material2; //切換為彈性材質
       }
 }
 }
