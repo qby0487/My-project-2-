@@ -30,13 +30,9 @@ public class SwichIdentity : MonoBehaviour
     public bool isAppear = true;
     void ToggleVisibility()
     {
-        isAppear = !isAppear;
-        if (isAppear==false){
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;}
-        else{
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;}
+        isAppear = !isAppear;      
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = !this.gameObject.GetComponent<SpriteRenderer>().enabled;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = !this.gameObject.GetComponent<BoxCollider2D>().enabled;
     }
 
 
