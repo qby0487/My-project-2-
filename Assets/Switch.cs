@@ -26,24 +26,27 @@ using UnityEngine;
 //}
 public class SwichIdentity : MonoBehaviour
 {
-    // 公開布爾變數，預設為true（物件可見）
+
     public bool isAppear = true;
+    void ToggleVisibility()
+    {
+        isAppear = !isAppear;
+        if (isAppear==false){
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;}
+        else{
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;}
+    }
+
 
     void Update()
     {
-        // 當按下W鍵時
         if (Input.GetKeyDown(KeyCode.W))
         {
-            // 切換物件的顯示狀態
             ToggleVisibility();
+            Debug.Log("Testmessage");
         }
     }
 
-    void ToggleVisibility()
-    {
-        // 反轉當前狀態
-        isAppear = !isAppear;
-        // 設置物件的活躍狀態
-        gameObject.SetActive(isAppear);
-    }
 }
