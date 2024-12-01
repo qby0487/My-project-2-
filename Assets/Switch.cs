@@ -87,7 +87,7 @@ public class SwichIdentity : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             ToggleVisibility();
-            Debug.Log("Testmessage");
+      //      Debug.Log("Testmessage");
         }
     }
 

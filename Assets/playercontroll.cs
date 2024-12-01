@@ -65,11 +65,11 @@ public class Movement : MonoBehaviour {
   }
   void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "normal"){
-            if (other.contacts[0].normal == new Vector2(1f,0f) ){ //偵測含有normal tag的物體右側，並取消跳躍狀態
-              Debug.Log("aaaaaaa");
+            if (other.contacts[0].normal == new Vector2(1f,0f) ){ //normal tag right side
+             // Debug.Log("aaaaaaa");
               Jumpcheck = false;
             }
-            else if (other.contacts[0].normal == new Vector2(-1f,0f) ){ //偵測含有normal tag的物體左側，並取消跳躍狀態
+            else if (other.contacts[0].normal == new Vector2(-1f,0f) ){ //normal tag left side
               Jumpcheck = false;
             if (other.gameObject.tag == "123")
             {
