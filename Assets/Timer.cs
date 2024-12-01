@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//test message
 public class Timer : MonoBehaviour
 {
     [SerializeField] Text scoreText ; //計時器  

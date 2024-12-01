@@ -49,10 +49,10 @@ using UnityEngine;
 //}
 public class SwichIdentity : MonoBehaviour
 {
-    // ¨Ï¥Î [SerializeField] Åý¨p¦³ÅÜ¼Æ¦b Unity Inspector ¤¤¥i¨£
+    // ï¿½Ï¥ï¿½ [SerializeField] ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½Ü¼Æ¦b Unity Inspector ï¿½ï¿½ï¿½iï¿½ï¿½
     [SerializeField] private bool isAppear = true;
 
-    // ²K¥[¤½¦@ÄÝ©Ê¥H¤¹³\¥~³¡¸}¥»±±¨î isAppear
+    // ï¿½Kï¿½[ï¿½ï¿½ï¿½@ï¿½Ý©Ê¥Hï¿½ï¿½ï¿½\ï¿½~ï¿½ï¿½ï¿½}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ isAppear
     public bool IsAppear
     {
         get { return isAppear; }
@@ -63,7 +63,7 @@ public class SwichIdentity : MonoBehaviour
         }
     }
 
-    // ±N¤Á´«ÅÞ¿è´£¨ú¨ì³æ¿Wªº¤èªk¤¤
+    // ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Þ¿è´£ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½kï¿½ï¿½
     void UpdateVisibility()
     {
         SpriteRenderer spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -80,13 +80,20 @@ public class SwichIdentity : MonoBehaviour
     {
         IsAppear = !IsAppear;
     }
-
+    
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             ToggleVisibility();
             Debug.Log("Testmessage");
         }
     }
+
+    void Start()
+    {
+        UpdateVisibility();
+    }
+
 }
