@@ -24,7 +24,7 @@ public class CheckpointManager : MonoBehaviour
     public void UpdateCheckpoint(Vector3 newCheckpoint)
     {
         currentCheckpoint = newCheckpoint;
-        Debug.Log($"新的存檔點已更新至: {currentCheckpoint}");
+     //   Debug.Log($"新的存檔點已更新至: {currentCheckpoint}");
         OnCheckpointUpdated?.Invoke(currentCheckpoint); // 通知訂閱者
     }
 
