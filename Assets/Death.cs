@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Death : MonoBehaviour
+//void OnCollisionEnter2D(Collision2D other)
+//{
+//    if (other.gameObject.name == "player")
+//    {
+//        DeathMessage = true;
+//    }
+//}
 
+public class Death : MonoBehaviour
 {
-  [SerializeField]private Vector3 respawnPoint;
+    public bool DeathMessage = false;
+
+    [SerializeField]private Vector3 respawnPoint;
   private void Start()
    {
     CheckpointManager.Instance.OnCheckpointUpdated += UpdateRespawnPoint;
@@ -16,6 +25,26 @@ public class Death : MonoBehaviour
         Debug.Log($"重生點已更新至: {respawnPoint}");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //public class GameManager : MonoBehaviour
 //{
 //    // 遊戲結束協程
@@ -25,7 +54,7 @@ public class Death : MonoBehaviour
 //        StopAllCoroutines();
 
 //        // 2. 暫停玩家輸入
-//        playerController.enabled = false;
+//        playerControll.enabled = false;
 
 //        // 3. 顯示遊戲結束畫面
 //        gameOverPanel.SetActive(true);

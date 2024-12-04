@@ -29,9 +29,13 @@ public class Movement : MonoBehaviour {
   private bool DPressed = false; 
   private bool Jumpstatus = false;
 
+  private bool death = false;
 
 
-  void Awake() {
+
+
+
+    void Awake() {
     body = GetComponent<Rigidbody2D>(); // Setting the RigidBody2D component.
     sr = GetComponent<SpriteRenderer>(); // Setting the SpriteRenderer component. 
 
@@ -41,7 +45,15 @@ public class Movement : MonoBehaviour {
 
   // Update() is called every frame.
   void Update() {
-  if (isGrounded == true){
+    //death = GameObject.Find("DeathBlock").GetComponent<Death>().DeathMessage; 
+    //    if (death != null)
+    //    {if (death = true) 
+    //        {
+    //            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+    //            rb.constraints = RigidbodyConstraints2D.None; // 完全解除所有約束
+    //        }
+    //    }
+    if (isGrounded == true){
     if (Jumpstatus==true){
       Jumptime1= Time.time;
       Jumpstatus = false;
@@ -65,20 +77,22 @@ public class Movement : MonoBehaviour {
   }
   void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "normal"){
-            if (other.contacts[0].normal == new Vector2(1f,0f) ){ //normal tag right side
-             // Debug.Log("aaaaaaa");
-              Jumpcheck = false;
+            if (other.contacts[0].normal == new Vector2(1f, 0f))
+            { //normal tag right side
+              // Debug.Log("aaaaaaa");
+                Jumpcheck = false;
             }
-            else if (other.contacts[0].normal == new Vector2(-1f,0f) ){ //normal tag left side
-              Jumpcheck = false;
-            if (other.gameObject.tag == "123")
-            {
-                Debug.Log("aAAAaa");
-            }
-            if (other.gameObject.tag == "456")
-            {
-                Debug.Log("456456456");
-            }
+            else if (other.contacts[0].normal == new Vector2(-1f, 0f))
+            { //normal tag left side
+                Jumpcheck = false;
+                //if (other.gameObject.tag == "123")
+                //{
+                //    Debug.Log("aAAAaa");
+                //}
+                //if (other.gameObject.tag == "456")
+                //{
+                //    Debug.Log("456456456");
+                //}
             }
 }
 }
