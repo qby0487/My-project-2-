@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour {
         if (jumpPressed && isGrounded) {
             Jumptime2=Time.time;
 
-          if ((Jumptime2 - Jumptime1) < 1.26f){
+          if ((Jumptime2 - Jumptime1) < 0.5f){
             body.velocity = new Vector2(0, jumpForce); // Jump physics.
             jumpPressed = false;  } // Returning initial value. 
           else{
