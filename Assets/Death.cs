@@ -2,28 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//void OnCollisionEnter2D(Collision2D other)
-//{
-//    if (other.gameObject.name == "player")
-//    {
-//        DeathMessage = true;
-//    }
-//}
 
 public class Death : MonoBehaviour
 {
     public bool DeathMessage = false;
+    public LayerMask DeathLayer;
+    
+    public PhysicsMaterial2D material2;
+    private Collider2D col;
+   
 
     [SerializeField]private Vector3 respawnPoint;
   private void Start()
    {
     CheckpointManager.Instance.OnCheckpointUpdated += UpdateRespawnPoint;
    }
+
+
    private void UpdateRespawnPoint(Vector3 newCheckpoint)
     {
         respawnPoint = newCheckpoint;
         Debug.Log($"重生點已更新至: {respawnPoint}");
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+{
+    if ((DeathLayer.value & (1 << other.gameObject.layer)) != 0)
+    {
+        DeathMessage = true;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();    
+       
+        rb.constraints = RigidbodyConstraints2D.None; 
+       
+        Movement script = GetComponent<Movement>();
+       
+        script.enabled = false;
+       //col.sharedMaterial = material2;
+    }
+
+      if (DeathMessage==true){
+            
+         Collider2D collider = other.collider;
+         collider.sharedMaterial = material2;
+        } 
+
+
+}
+
 }
 
 
