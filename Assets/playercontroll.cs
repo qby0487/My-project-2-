@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour {
   private bool DPressed = false; 
   private bool Jumpstatus = false;
 
-  private bool death = false;
+
 
 
 

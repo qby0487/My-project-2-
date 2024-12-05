@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CheckpointManager.cs" />
+    <Compile Include="Assets\DeathSwich.cs" />
     <Compile Include="Assets\Switch.cs" />
     <Compile Include="Assets\Camera CTRL.cs" />
     <Compile Include="Assets\checkpoint.cs" />

@@ -10,7 +10,9 @@ public class Death : MonoBehaviour
     
     public PhysicsMaterial2D material2;
     private Collider2D col;
+    
    
+    [SerializeField]private int clonelimited = 5;
 
     [SerializeField]private Vector3 respawnPoint;
   private void Start()
@@ -27,25 +29,37 @@ public class Death : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
 {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();  
+        Movement script = GetComponent<Movement>();
     if ((DeathLayer.value & (1 << other.gameObject.layer)) != 0)
     {
         DeathMessage = true;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();    
+          
        
         rb.constraints = RigidbodyConstraints2D.None; 
        
-        Movement script = GetComponent<Movement>();
-       
+          
         script.enabled = false;
        //col.sharedMaterial = material2;
     }
-
+   // if(other.gameObject.tag != "Player"){
       if (DeathMessage==true){
             
          Collider2D collider = other.collider;
          collider.sharedMaterial = material2;
-        } 
+         
+         if (clonelimited > 0){
+            transform.localScale = new Vector3(0.2f,0.25f,0f);
+            clonelimited--;
+            GameObject newObject = Instantiate(gameObject);
+        }
 
+           // transform.localScale = transform.localScale * 0.999f;
+            Vector3 randomForce = Random.insideUnitSphere * 500f;
+            rb.AddForce(randomForce);
+          
+        } 
+   // }
 
 }
 
