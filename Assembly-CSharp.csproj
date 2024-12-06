@@ -72,6 +72,7 @@
     <Compile Include="Assets\Death.cs" />
     <Compile Include="Assets\playercontroll.cs" />
     <Compile Include="Assets\Timer.cs" />
+    <Compile Include="Assets\Clonemanager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CharlieMadeAThing\NeatoTags\Core\UXML\NeatoTag.uxml" />

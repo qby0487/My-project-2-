@@ -11,14 +11,79 @@ public class Death : MonoBehaviour
     public PhysicsMaterial2D material2;
     private Collider2D col;
     
-   
+   public Transform parentTransform; 
     [SerializeField]private int clonelimited = 5;
 
     [SerializeField]private Vector3 respawnPoint;
   private void Start()
    {
+
+    
     CheckpointManager.Instance.OnCheckpointUpdated += UpdateRespawnPoint;
+    
    }
+
+    private void Update()
+    {
+         if (Input.GetKeyDown(KeyCode.R))
+        {
+            Executedeath();
+            ResetAllComponentsExceptOne<Death>();
+        
+            transform.SetPositionAndRotation(respawnPoint, Quaternion.identity);
+            transform.localScale = new Vector3(0.4f,1f,1f);  
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+ 
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    
+            
+             DeathMessage = false;
+             clonelimited = 5;
+          //   GetComponent<Checkpoint>().enabled = true;
+        }
+    }
+
+void Executedeath()
+{
+    // 使用 for 循環從後往前刪除
+    for (int i = transform.parent.childCount - 1; i >= 0; i--)
+    {
+        Transform child = transform.parent.GetChild(i);
+        if (child.name == "player-clone")
+        {
+            Destroy(child.gameObject);
+        }
+    }    
+}
+
+void ResetAllComponentsExceptOne<T>() where T : Component
+{
+    // 獲取所有 Component
+    Component[] components = GetComponents<Component>();
+    
+    foreach (Component component in components)
+    {
+        // 跳過 Transform 和指定的 Component 類型
+        if (component is Transform || component is T)
+            continue;
+        
+        // 如果是 Behaviour 類型（如 Script），可以直接禁用和啟用
+        if (component is Behaviour behaviour)
+        {
+            behaviour.enabled = false;
+            behaviour.enabled = true;
+        }
+        // 對於其他類型，可以嘗試重置
+        else
+        {
+            // 這裡可能需要根據不同 Component 類型客製化重置邏輯
+            component.GetType().GetMethod("Reset")?.Invoke(component, null);
+        }
+    }
+}
+
 
 
    private void UpdateRespawnPoint(Vector3 newCheckpoint)
@@ -44,20 +109,26 @@ public class Death : MonoBehaviour
     }
    // if(other.gameObject.tag != "Player"){
       if (DeathMessage==true){
-            
+      //  GetComponent<Checkpoint>().enabled = false;
          Collider2D collider = other.collider;
          collider.sharedMaterial = material2;
          
          if (clonelimited > 0){
             transform.localScale = new Vector3(0.2f,0.25f,0f);
             clonelimited--;
-            GameObject newObject = Instantiate(gameObject);
+            
+            GameObject clone = Instantiate(gameObject, transform.parent);
+            
+            SpriteRenderer spriteRenderer = clone.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = Color.blue;
+            clone.name = "player-clone";
+
+            
         }
 
            // transform.localScale = transform.localScale * 0.999f;
             Vector3 randomForce = Random.insideUnitSphere * 500f;
             rb.AddForce(randomForce);
-          
         } 
    // }
 

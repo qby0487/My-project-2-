@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a04c718f11ee304b898b2a9041f7d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint_x: 0
-  checkpoint_y: 0
+  targetObject: {fileID: 0}
+  Checkpointenable: 1
 --- !u!61 &1965527264878283292
 BoxCollider2D:
   m_ObjectHideFlags: 0
