@@ -3,31 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-
 public class Movement : MonoBehaviour {
 
-  public float runSpeed = 0.6f; 
-  public float jumpForce = 2.6f; 
+    public float runSpeed = 0.6f;
+    public float jumpForce = 2.6f;
 
-  public float Jumptime1;
-  public float Jumptime2;
-  public PhysicsMaterial2D material1; 
-  public PhysicsMaterial2D material2;
-  private Collider2D col;
+    public float Jumptime1;
+    public float Jumptime2;
+    public PhysicsMaterial2D material1;
+    public PhysicsMaterial2D material2;
+    private Collider2D col;
 
-  private Rigidbody2D body; // Variable for the RigidBody2D component.
-  private SpriteRenderer sr; // Variable for the SpriteRenderer component.
-  public bool Jumpcheck = true;
-  [SerializeField] private bool isGrounded; //check if character is on the ground.
-  public GameObject groundCheckPoint; // The object through which the isGrounded check is performed.
-  public float groundCheckRadius; // isGrounded check radius.
-  public LayerMask groundLayer; // Layer wich the character can jump on.
+    private Rigidbody2D body; // Variable for the RigidBody2D component.
+    private SpriteRenderer sr; // Variable for the SpriteRenderer component.
+    public bool Jumpcheck = true;
+    [SerializeField] private bool isGrounded; //check if character is on the ground.
+    public GameObject groundCheckPoint; // The object through which the isGrounded check is performed.
+    public float groundCheckRadius; // isGrounded check radius.
+    public LayerMask groundLayer; // Layer wich the character can jump on.
 
-   GameObject currentfloor;
-  private bool jumpPressed = false; 
-  private bool APressed = false; 
-  private bool DPressed = false; 
-  private bool Jumpstatus = false;
+    GameObject currentfloor;
+    private bool jumpPressed = false;
+    private bool APressed = false;
+    private bool DPressed = false;
+    private bool Jumpstatus = false;
+
+
+
 
 
 

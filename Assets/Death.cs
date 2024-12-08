@@ -15,11 +15,15 @@ public class Death : MonoBehaviour
     [SerializeField]private int clonelimited = 5;
 
     [SerializeField]private Vector3 respawnPoint;
-  private void Start()
+
+    public GameObject RepalyText;
+
+    private void Start()
    {
 
-    
-    CheckpointManager.Instance.OnCheckpointUpdated += UpdateRespawnPoint;
+        RepalyText.SetActive(false);
+
+        CheckpointManager.Instance.OnCheckpointUpdated += UpdateRespawnPoint;
     
    }
 
@@ -109,7 +113,8 @@ void ResetAllComponentsExceptOne<T>() where T : Component
     }
    // if(other.gameObject.tag != "Player"){
       if (DeathMessage==true){
-      //  GetComponent<Checkpoint>().enabled = false;
+            //  GetComponent<Checkpoint>().enabled = false;
+            RepalyText.SetActive(true);
          Collider2D collider = other.collider;
          collider.sharedMaterial = material2;
          
