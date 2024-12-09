@@ -15,7 +15,7 @@ public class Death : MonoBehaviour
 
     public event Action Resetevent;
 
-    //public event Action<bool> Deathevent;
+    public event Action Deathevent;
     public Transform parentTransform; 
     [SerializeField]private int clonelimited = 5;
 
@@ -48,6 +48,7 @@ public class Death : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
             Resetevent?.Invoke();
+         
  
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
@@ -114,7 +115,7 @@ void ResetAllComponentsExceptOne<T>() where T : Component
     if ((DeathLayer.value & (1 << other.gameObject.layer)) != 0)
     {
         DeathMessage = true;
-          
+         Deathevent?.Invoke();
        
         rb.constraints = RigidbodyConstraints2D.None; 
        
@@ -127,7 +128,7 @@ void ResetAllComponentsExceptOne<T>() where T : Component
           
           
            // Resetevent?.Invoke(true);
-          
+           
           
             //  GetComponent<Checkpoint>().enabled = false;
             RepalyText.SetActive(true);

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -7,6 +8,14 @@ public class CheckpointManager : MonoBehaviour
     public event Action<Vector3> OnCheckpointUpdated; // 事件：當前檢查點更新
 
     [SerializeField] private Vector3 currentCheckpoint; // 當前檢查點位置
+
+    public Death death;
+
+    void Start()
+    {
+        death.Deathevent += Checkpointoff;
+        death.Resetevent += Checkpointon;
+    }
 
     private void Awake()
     {
@@ -21,6 +30,15 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
+    private void Checkpointoff(){
+            Debug.Log("aaaaaaa");
+    gameObject.SetActive(false);
+
+    }
+    private void Checkpointon() {
+        gameObject.SetActive(true);
+    }
+
     public void UpdateCheckpoint(Vector3 newCheckpoint)
     {
         currentCheckpoint = newCheckpoint;
@@ -32,4 +50,4 @@ public class CheckpointManager : MonoBehaviour
     {
         return currentCheckpoint; // 提供當前存檔點
     }
-}
+}   

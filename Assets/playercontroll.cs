@@ -30,13 +30,6 @@ public class Movement : MonoBehaviour {
 
 
 
-
-
-
-
-
-
-
     void Awake() {
     body = GetComponent<Rigidbody2D>(); // Setting the RigidBody2D component.
     sr = GetComponent<SpriteRenderer>(); // Setting the SpriteRenderer component. 

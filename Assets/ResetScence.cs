@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResetScence : MonoBehaviour
@@ -24,7 +26,13 @@ public class ResetScence : MonoBehaviour
     foreach (Collider2D col in colliders)
     {
         col.sharedMaterial = null;
-        Debug.Log("test");
+       // Debug.Log("test");
     }
+
+
+
+
+
+
 }
 }
