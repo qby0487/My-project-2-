@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -10,13 +12,18 @@ public class Death : MonoBehaviour
     
     public PhysicsMaterial2D material2;
     private Collider2D col;
-    
-   public Transform parentTransform; 
+
+    public event Action Resetevent;
+
+    //public event Action<bool> Deathevent;
+    public Transform parentTransform; 
     [SerializeField]private int clonelimited = 5;
 
     [SerializeField]private Vector3 respawnPoint;
 
     public GameObject RepalyText;
+
+     
 
     private void Start()
    {
@@ -33,10 +40,14 @@ public class Death : MonoBehaviour
         {
             Executedeath();
             ResetAllComponentsExceptOne<Death>();
+
+            RepalyText.SetActive(false);
         
             transform.SetPositionAndRotation(respawnPoint, Quaternion.identity);
             transform.localScale = new Vector3(0.4f,1f,1f);  
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+            Resetevent?.Invoke();
  
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
@@ -113,6 +124,11 @@ void ResetAllComponentsExceptOne<T>() where T : Component
     }
    // if(other.gameObject.tag != "Player"){
       if (DeathMessage==true){
+          
+          
+           // Resetevent?.Invoke(true);
+          
+          
             //  GetComponent<Checkpoint>().enabled = false;
             RepalyText.SetActive(true);
          Collider2D collider = other.collider;
@@ -125,14 +141,14 @@ void ResetAllComponentsExceptOne<T>() where T : Component
             GameObject clone = Instantiate(gameObject, transform.parent);
             
             SpriteRenderer spriteRenderer = clone.GetComponent<SpriteRenderer>();
-            spriteRenderer.color = Color.blue;
+            //spriteRenderer.color = Color.red;
             clone.name = "player-clone";
 
             
         }
 
            // transform.localScale = transform.localScale * 0.999f;
-            Vector3 randomForce = Random.insideUnitSphere * 500f;
+            Vector3 randomForce = UnityEngine.Random.insideUnitSphere * 500f;
             rb.AddForce(randomForce);
         } 
    // }

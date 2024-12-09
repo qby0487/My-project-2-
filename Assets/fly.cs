@@ -2,47 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class JumpPlatform : MonoBehaviour
-//{
-//    [Header("Platform Settings")]
-//    //public float pauseDuration = 1.5f; // ¼È°±ªº®É¶¡¡]¬í¡^
-//    public float launchForce = 10f; // ¼u®gªº¤O«×
-//    public bool isActive = true; // ¥­¥x¬O§_±Ò¥Î
+public class JumpPlatform : MonoBehaviour
+{
+   [Header("Platform Settings")]
+   public float pauseDuration = 1.5f; // ï¿½È°ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½]ï¿½ï¿½ï¿½^
+   public float launchForce = 10f; // ï¿½uï¿½gï¿½ï¿½ï¿½Oï¿½ï¿½
+   public bool isActive = true; // ï¿½ï¿½ï¿½xï¿½Oï¿½_ï¿½Ò¥ï¿½
 
-//    private void OnCollisionEnter(Collision collision)
-//    {
-//        // ÀË¬d¬O§_¬°ª±®a
-//        if (isActive && collision.gameObject.CompareTag("Player"))
-//        {
-//            // Àò¨úª±®aªº­èÅé²Õ¥ó
-//            Rigidbody playerRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+   private void OnCollisionEnter2D(Collision2D collision)
+    
+   {
+        //Debug.Log("testmessage");
+       // ï¿½Ë¬dï¿½Oï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½a
+       if (isActive && collision.gameObject.CompareTag("Player"))
+        {
+         //   Debug.Log("testmessage2");
+           // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¥ï¿½
+           Rigidbody2D playerRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
 
-//            if (playerRigidbody != null)
-//            {
-//                // ±Ò°Ê¨óµ{¨Ó³B²z¼È°±©M¼u®g
-//                StartCoroutine(LaunchPlayer(playerRigidbody));
-//            }
-//        }
-//    }
+           if (playerRigidbody != null)
+           {
+               // ï¿½Ò°Ê¨ï¿½{ï¿½Ó³Bï¿½zï¿½È°ï¿½ï¿½Mï¿½uï¿½g
+               StartCoroutine(LaunchPlayer(playerRigidbody));
+           }
+       }
+   }
 
-//    private System.Collections.IEnumerator LaunchPlayer(Rigidbody playerRigidbody)
-//    {
-//        // ¼È°±ª±®a²¾°Ê
-//        playerRigidbody.isKinematic = true;
+   private System.Collections.IEnumerator LaunchPlayer(Rigidbody2D playerRigidbody)
+   {
+       // ï¿½È°ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½
+       playerRigidbody.isKinematic = true;
 
-//        // µ¥«Ý«ü©wªº¼È°±®É¶¡
-//        yield return new WaitForSeconds(pauseDuration);
+       // ï¿½ï¿½ï¿½Ý«ï¿½ï¿½wï¿½ï¿½ï¿½È°ï¿½ï¿½É¶ï¿½
+       yield return new WaitForSeconds(pauseDuration);
 
-//        // ­«·s±Ò¥Îª«²z®ÄªG
-//        playerRigidbody.isKinematic = false;
+       // ï¿½ï¿½ï¿½sï¿½Ò¥Îªï¿½ï¿½zï¿½ÄªG
+      playerRigidbody.isKinematic = false;
 
-//        // ¦V¤W¬I¥[¼u®g¤O
-//        playerRigidbody.AddForce(Vector3.up * launchForce, ForceMode.Impulse);
-//    }
+       // ï¿½Vï¿½Wï¿½Iï¿½[ï¿½uï¿½gï¿½O
+       playerRigidbody.AddForce(Vector3.up * launchForce, ForceMode2D.Impulse);
+   }
 
-//    // ¥i¥H¥Î©ó°ÊºA±±¨î¥­¥xªº±Ò¥Î/¸T¥Î
-//    public void SetPlatformActive(bool active)
-//    {
-//        isActive = active;
-//    }
-//}
+   // ï¿½iï¿½Hï¿½Î©ï¿½ÊºAï¿½ï¿½ï¿½î¥­ï¿½xï¿½ï¿½ï¿½Ò¥ï¿½/ï¿½Tï¿½ï¿½
+   public void SetPlatformActive(bool active)
+   {
+       isActive = active;
+   }
+}

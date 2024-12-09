@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5948390537104862762}
   - component: {fileID: 6653519080844094699}
   - component: {fileID: 1345041630577688381}
-  - component: {fileID: 8856616108625508207}
+  - component: {fileID: 7460672018470453082}
   m_Layer: 6
   m_Name: DeathBlock (R)
   m_TagString: normal
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.50000006
---- !u!114 &8856616108625508207
+--- !u!114 &7460672018470453082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8969689828997673107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2c616d088868d478e8e552d81167d5, type: 3}
+  m_Script: {fileID: 11500000, guid: a23eb239605189c4082ad3a409a2d8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAppear: 1

@@ -67,13 +67,13 @@ public class SwichIdentity : MonoBehaviour
     void UpdateVisibility()
     {
         SpriteRenderer spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        BoxCollider2D boxCollider = this.gameObject.GetComponent<BoxCollider2D>();
+        Collider2D Collider = this.gameObject.GetComponent<Collider2D>();
 
         if (spriteRenderer != null)
             spriteRenderer.enabled = isAppear;
 
-        if (boxCollider != null)
-            boxCollider.enabled = isAppear;
+        if (Collider != null)
+            Collider.enabled = isAppear;
     }
 
     void ToggleVisibility()

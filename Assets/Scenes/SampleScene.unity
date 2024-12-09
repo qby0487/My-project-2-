@@ -827,6 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 609645077}
+  - component: {fileID: 609645078}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -873,8 +874,22 @@ Transform:
   - {fileID: 277771551}
   - {fileID: 832307157}
   - {fileID: 32678055}
+  - {fileID: 2112676277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609645078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609645076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc319cd0dc171146b40e73eb83d57a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: {fileID: 8312519812200418555}
 --- !u!4 &707595305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5166045653387016123, guid: 096b4e41b3cbc6443945c8dc8dc993b8, type: 3}
@@ -1541,7 +1556,7 @@ GameObject:
   - component: {fileID: 1162878189}
   - component: {fileID: 1162878188}
   m_Layer: 3
-  m_Name: type 2
+  m_Name: just normal floor
   m_TagString: normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2270,7 +2285,8 @@ GameObject:
   - component: {fileID: 1661586059}
   - component: {fileID: 1661586058}
   - component: {fileID: 1661586060}
-  m_Layer: 0
+  - component: {fileID: 1661586061}
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2389,6 +2405,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1661586061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661586057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b3e826bc4ef984ba081771da38bb84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseDuration: 1.5
+  launchForce: 10
+  isActive: 1
 --- !u!4 &1717128713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5166045653387016123, guid: 096b4e41b3cbc6443945c8dc8dc993b8, type: 3}
@@ -2696,7 +2727,7 @@ GameObject:
   - component: {fileID: 1963959610}
   - component: {fileID: 1963959612}
   m_Layer: 6
-  m_Name: DeathBlock
+  m_Name: normal DeathBlock
   m_TagString: normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,8 +3083,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112676276}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04376316, y: -1.2571105, z: 0.10987344}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3061,7 +3092,7 @@ Transform:
   - {fileID: 2139326303}
   - {fileID: 2087608801}
   - {fileID: 201953774}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 609645077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2134968932 stripped
 Transform:
@@ -3545,6 +3576,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1374523710853177167, guid: 5a70cd0db9dd8d949af721a7b360f930, type: 3}
   m_PrefabInstance: {fileID: 6446018416344273773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8312519812200418555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2363847064521615947, guid: 5a70cd0db9dd8d949af721a7b360f930, type: 3}
+  m_PrefabInstance: {fileID: 6446018416344273773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312519812200418554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b6f11e9282db645af24dbceb3e2bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8994440802386114974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3616,5 +3658,4 @@ SceneRoots:
   - {fileID: 1574877024}
   - {fileID: 1957782978}
   - {fileID: 609645077}
-  - {fileID: 2112676277}
   - {fileID: 1661586059}
