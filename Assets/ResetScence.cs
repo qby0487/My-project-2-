@@ -10,29 +10,22 @@ public class ResetScence : MonoBehaviour
     // Start is called before the first frame update
 
     public Death death;
+
+    private Collider2D[] childColliders;
     void Start()
     {
+        childColliders = GetComponentsInChildren<Collider2D>();
         death.Resetevent += ResetAllPhysicalObjects;
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     void ResetAllPhysicalObjects()
 {
-    Collider2D[] colliders = FindObjectsOfType<Collider2D>();
-    foreach (Collider2D col in colliders)
-    {
-        col.sharedMaterial = null;
-       // Debug.Log("test");
-    }
-
-
-
-
-
-
+    for (int i = 0; i < childColliders.Length; i++)
+            {
+                childColliders[i].sharedMaterial = null;
+            }
 }
 }
