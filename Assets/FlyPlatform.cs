@@ -32,7 +32,11 @@ public class JumpPlatform2D : MonoBehaviour
 
         // 暫停玩家移動
         DebugLog("開始暫停玩家");
-        playerRb.velocity = Vector2.zero;
+        //playerRb.velocity = Vector2.zero;
+        //playerRb.MovePosition(playerRb.position);
+        playerRb.AddForce(-playerRb.velocity, ForceMode2D.Impulse);
+
+
 
         // 等待指定時間
         yield return new WaitForSeconds(pauseDuration);
