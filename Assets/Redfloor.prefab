@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5166045653387016123}
   - component: {fileID: 470237495367063900}
   - component: {fileID: 8883469960615359649}
-  - component: {fileID: 9048876550768230672}
   - component: {fileID: 1184928685256915215}
   m_Layer: 3
   m_Name: Redfloor
@@ -132,20 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &9048876550768230672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4632840879461833730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501fb58898c061d469e1f038995b8024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags:
-  - {fileID: 11400000, guid: bd42924c6ca12de4bb3df959bf29b240, type: 2}
 --- !u!114 &1184928685256915215
 MonoBehaviour:
   m_ObjectHideFlags: 0

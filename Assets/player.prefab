@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5db8e487f9bc904c9585c49594ff6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 5
+  runSpeed: 7.5
   jumpForce: 6.5
   Jumptime1: 0
   Jumptime2: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   parentTransform: {fileID: 0}
   clonelimited: 4
   respawnPoint: {x: 0, y: 0, z: 0}
+  RepalyText: {fileID: 0}
 --- !u!1 &8947589459806123377
 GameObject:
   m_ObjectHideFlags: 0

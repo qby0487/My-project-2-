@@ -86,7 +86,10 @@ public class Movement : MonoBehaviour {
   void FixedUpdate() {
    
       isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer); // Checking if character is on the ground.
-      if (isGrounded==true){Jumpcheck=true;}
+      
+      
+    if (isGrounded==true)Jumpcheck=true;
+
 
 
       // Left/Right movement.
