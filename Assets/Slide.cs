@@ -13,6 +13,9 @@ public class Slide : MonoBehaviour
 
     private Rigidbody2D body;
 
+    private float Rotation;
+
+    private float OtherRotation;
 
 
     // Start is called before the first frame update
@@ -22,14 +25,29 @@ public class Slide : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Slidecheck==true){
-            
-        }
-    }
+
+
      private void FixedUpdate()
     {
         Slidecheck = Physics2D.OverlapCircle(SlideCheckPoint.transform.position,SlideCheckRadius, slideLayer);
+             
+                if (Slidecheck==true){
+             //body.isKinematic = true;
+             transform.position = SlideCheckPoint.transform.position - new Vector3(0f, 0.5f, 0f);
+            Rotation = transform.eulerAngles.y;
+            sliding();
+            }
+          //  else body.isKinematic = false;
+   
     }
+    void sliding(){
+
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        
+            OtherRotation = other.transform.rotation.eulerAngles.z;
+            Debug.Log(OtherRotation);
+    }
+
+
 }

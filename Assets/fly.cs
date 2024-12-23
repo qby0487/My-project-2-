@@ -6,7 +6,7 @@ public class JumpPlatform : MonoBehaviour
 {
    [Header("Platform Settings")]
    public float pauseDuration = 1.5f; // �Ȱ����ɶ��]���^
-   public float launchForce = 10f; // �u�g���O��
+   public float launchForce = 18.5f; // �u�g���O��
    public bool isActive = true; // ���x�O�_�ҥ�
 
    private void OnCollisionEnter2D(Collision2D collision)
