@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour {
     public float runSpeed = 0.6f;
     public float jumpForce = 2.6f;
 
+    public float strong = 1.35f;
+
     public float Jumptime1;
     public float Jumptime2;
     public PhysicsMaterial2D material1;
@@ -117,7 +119,7 @@ public class Movement : MonoBehaviour {
             body.velocity = new Vector2(0, jumpForce); // Jump physics.
             jumpPressed = false;  } // Returning initial value. 
           else{
-            body.velocity = new Vector2(0, jumpForce*1.35f); //蓄力大跳
+            body.velocity = new Vector2(0, jumpForce*strong); //蓄力大跳
             jumpPressed = false;
           }   
       }
